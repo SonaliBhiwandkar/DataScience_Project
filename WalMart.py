@@ -43,31 +43,31 @@ print(big_mart_data.describe())
 sns.set()
 # Item_Weight distribution
 plt.figure(figsize=(6,6))
-sns.displot(big_mart_data['Item_Weight'])
+sns.histplot(big_mart_data['Item_Weight'])
 plt.show()
 
 plt.figure(figsize=(6,6))
-sns.displot(big_mart_data['Item_Visibility'])
+sns.histplot(big_mart_data['Item_MRP'])
 plt.show()
 
 plt.figure(figsize=(6,6))
-sns.displot(big_mart_data['Item_MRP'])
+sns.histplot(big_mart_data['Item_Visibility'])
 plt.show()
 
 plt.figure(figsize=(6,6))
-sns.displot(big_mart_data['Item_Outlet_Sales'])
-plt.show()
-
-plt.figure(figsize=(6,6))
-sns.countplot(x='Outlet_Establishment_Year', data=big_mart_data)
+sns.histplot(big_mart_data['Item_Outlet_Sales'])
 plt.show()
 
 plt.figure(figsize=(6,6))
 sns.countplot(x='Item_Fat_Content', data=big_mart_data)
 plt.show()
 
-plt.figure(figsize=(30,6))
+plt.figure(figsize=(6,6))
 sns.countplot(x='Item_Type', data=big_mart_data)
+plt.show()
+
+plt.figure(figsize=(6,6))
+sns.countplot(x='Outlet_Establishment_Year', data=big_mart_data)
 plt.show()
 
 plt.figure(figsize=(6,6))
@@ -107,10 +107,9 @@ regressor.fit(X_train, Y_train)
 training_data_prediction = regressor.predict(X_train)
 # R squared Value
 r2_train = metrics.r2_score(Y_train, training_data_prediction)
-print('R Squared value = ', r2_train)
+print('Prediction value of Training Model= ', r2_train)
 # prediction on test data
 test_data_prediction = regressor.predict(X_test)
 # R squared Value
 r2_test = metrics.r2_score(Y_test, test_data_prediction)
-print('R Squared value = ', r2_test)
-
+print('Prediction value of Testing = ', r2_test)
