@@ -5,7 +5,7 @@ import seaborn as sns
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-boston_data = pd.read_csv("C:/Users/admin/PycharmProjects/SONALIProject/venv/BostonHousing1.csv")
+boston_data = pd.read_csv('C:/Users/BHIWANDKAR/PycharmProjects/SONALIProject/BostonHousing1.csv')
 
 print(boston_data.keys())
 print(boston_data.head(10))
@@ -46,16 +46,12 @@ plt.show()
 sns.countplot(data=boston_data, x='tax')
 plt.show()
 
-sns.histplot(boston_data['rad'], color='red')
-plt.show()
 
-sns.distplot(boston_data['rad'], color='red')
+plt.figure(figsize=(10,10))
+sns.heatmap(boston_data.corr(),annot=True)
 plt.show()
 
 sns.countplot(data=boston_data,x='medv',palette='cubehelix')
-plt.show()
-
-sns.distplot(boston_data['medv'])
 plt.show()
 
 print(boston_data.corr())
@@ -66,12 +62,12 @@ plt.show()
 sns.jointplot(x='ptratio',y='medv',data=boston_data,kind='reg',color='r')
 plt.show()
 
-sns.boxplot(data=boston_data, x='medv')
-plt.show()
+#sns.boxplot(data=boston_data, x='medv')
+#plt.show()
 
 #encode categorical column
-print(boston_data['age'].value_counts())
-print(boston_data['rad'].value_counts())
+boston_data['chas'].value_counts()
+boston_data['nox'].value_counts()
 
 #training model
 X=boston_data.drop('medv', axis=1)
@@ -97,8 +93,7 @@ plt.show()
 
 lin_reg.score(X_test, y_test)
 error= y_test-predictions
-sns.distplot(error)
-plt.show()
+
 #accuracy
 accuracy_score= sklearn.metrics.mean_squared_error(y_test, predictions)
 print("Accuracy:",accuracy_score)
